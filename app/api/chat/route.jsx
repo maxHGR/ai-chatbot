@@ -11,7 +11,7 @@ const openai = new OpenAIApi(config)
 export const runtime = 'edge';
 
 
-const functions: ChatCompletionFunctions[] = [
+const functions = [
   {
     name: 'get_current_weather',
     description: 'Get the current weather',
@@ -59,14 +59,14 @@ const functions: ChatCompletionFunctions[] = [
 ]
 
 //`http://api.weatherapi.com/v1/future.json?key=${process.env.WEATHER_API_KEY}&q=${args.location}&dt=2023-09-10`
-export async function POST(req: Request) {
+export async function POST(req) {
   // Extract the `messages` from the body of the request
   const { messages } = await req.json()
 
   // tell the system to behave in an instructed way
   const systemMessage = {
     role: 'system',
-    content: "You are a helpful assistant that provide what people ask for. You stick to the functions and the data / results they provide, you only reference this information, if asked for. You research as many Datapoints as possible for your final response."
+    content: "You are a helpful assistant that provide what people ask for. You stick to the functions and the data / results they provide, you only reference this information, if asked for. You research as many Datapoints as possible for your final response.Format the Data so that it is readable, for example: (temperature: 10°C, humidity: 50%) preferably every datapoint in a new line"
   }
   messages.unshift(systemMessage);
 

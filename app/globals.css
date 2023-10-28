@@ -16,11 +16,90 @@
   }
 }
 
-body {
+ body {
   color: rgb(var(--foreground-rgb));
   background: lightsalmon;
+  background: cover;
+  font-size: 1em;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
-button {
-  background-color: lightseagreen;
+.glassUser {
+  background: rgba(116, 202, 173, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.glassAi {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+@keyframes slideAndFadeIn {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-10%);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  } 
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeDown {
+  0% {
+    transform: translate(20vw, 25vh);
+    opacity: 0;
+  } 
+  100% {
+    transform: translate(20vw, 50vh);
+    opacity: 1;
+  }
+}
+
+@keyframes hovering {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 10px);
+  }
+}
+
+.slideBottom {
+  animation: slideAndFadeIn 1.2s;
+}
+
+.fadeIn {
+  opacity: 1;
+  animation: fadeIn 2s ease-in;
+}
+
+.middlePosition {
+  position: fixed;
+  opacity: 0;
+  transform: translate(20vw, 50vh);
+  animation: fadeDown 4s 1s;
+}
+
+.hovering {
+  animation: slideAndFadeIn 1.5s ease-in-out,
+             hovering 2.8s 1.2s infinite ease-in-out;
 }
