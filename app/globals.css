@@ -22,7 +22,14 @@
   background: cover;
   font-size: 1em;
   min-height: 100vh;
+  max-height: 100vh;
   min-width: 100vw;
+}
+
+.iconPosition {
+  position: fixed;
+  top: 0%;
+  left: 10%;
 }
 
 .glassUser {
@@ -96,7 +103,7 @@
   position: fixed;
   opacity: 0;
   transform: translate(20vw, 50vh);
-  animation: fadeDown 4s 1s;
+  animation: fadeDown 4s;
 }
 
 .hovering {
